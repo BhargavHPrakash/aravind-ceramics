@@ -1,0 +1,384 @@
+*{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	box-sizing: border-box;
+}
+
+nav{
+	position: fixed;
+	top: 0; /* whenever for fixed navbar, use this. */
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 4.2rem;
+	background-color: #ffffff;
+	justify-content: space-between;  /* it works only with "width" */
+	gap : 4rem;
+	padding: 0 10%;
+	z-index: 10000000;
+	transition: 1s;
+}
+
+.nav-shadow { /* there is no class name like this in html, it is created in css and used by js. */
+	box-shadow: 0px 3px 8px 2px rgba(0,0,0, 0.2) /* x-offset y-offset blur radius color */
+}
+
+.Arvind-Ceramics{
+	font-style: oblique;
+	font-weight: 1000;
+	font-size: 2rem;
+}
+
+.Arvind{
+	color: #091FA4;
+}
+
+.nav-ele-cover{
+	display: flex;
+	align-items: center;
+	gap: 3rem;
+	width: 44.554rem;
+	height:auto;
+}
+
+.nav-element-text {
+	cursor: pointer;
+	position: relative;
+	font-weight: 550;
+}
+
+.nav-element-text:after{
+	content: '';
+    position: absolute;
+    width: 100%;
+    height: 0.3rem;
+    bottom: -1.5rem;
+    left: 0;
+    background-color: #091FA4;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.nav-element-text:hover:after {
+	transform: scaleX(1);
+	transform-origin: bottom left;
+}
+
+.nav-element{
+	width: max-content;
+	font-family: 'poopins', sans-serif;
+}
+
+.nav-element:hover > .more-options {
+	display: flex;
+}
+
+.more-options {
+	width: max-content;
+	display: none;
+	padding: 10px;
+	position: absolute;
+	gap: 40px;
+}
+
+.options {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	cursor: pointer;
+}
+
+.Find-tiles{
+	width: 9rem;
+	height: 2rem;
+	background-color: #091FA4;
+	color: #ffffff;
+	text-align: center;
+	font-family: 'poopins', sans-serif;
+}
+
+
+/*/////////////////////////////////////////// Navbar done ///////////////////////////////////////////*/
+
+
+.carousel-cover{
+	/*background-color: pink;*/
+    margin: 4.2rem auto 0 auto;
+	width: 90%;
+	height: 36rem;
+	overflow: hidden;
+	position: relative;
+}
+
+.slider{
+	position: relative;
+	/*background-color: red;*/
+	width: 89%;
+	height: 34rem;
+	margin: 0 4.7rem;
+	overflow: hidden;
+}
+
+.carousel-cover .slide{
+	position: absolute;
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+	display: none;
+    /*animation: imgslidenext 2s ease-out;*/
+}
+
+/*@keyframes imgslidenext {
+  0% {
+    opacity: 0.8; transform: scale(1.1);
+  }
+  100% {
+    opacity: 1; transform: scale(1);
+  }
+}*/
+
+.carousel-cover .slide.prev-active.left-to-right {
+	animation: prev-left-to-right 2s;
+}
+
+@keyframes prev-left-to-right{
+  0% {
+  		transform: translateX(0);
+  }
+  100% {
+  		transform: translateX(100%);
+  }	
+}
+
+.carousel-cover .slide.prev-active.right-to-left {
+	animation: prev-right-to-left 2s;
+}
+
+@keyframes prev-right-to-left{
+  0% {
+  		transform: translateX(0);
+  }
+  100% {
+  		transform: translateX(-100%);
+  }	
+}
+
+.carousel-cover .slide.active.left-to-right {
+	animation: active-left-to-right 2s;
+}
+
+@keyframes active-left-to-right{
+  0% {
+  		transform: translateX(-100%);
+  }
+  100% {
+  		transform: translateX(0);
+  }	
+}
+
+.carousel-cover .slide.active.right-to-left {
+	animation: active-right-to-left 2s;
+}
+@keyframes active-right-to-left{
+  0% {
+  		transform: translateX(100%);
+  }
+  100% {
+  		transform: translateX(0);
+  }		
+}
+
+/*still there is problem(2 imgs are getting block at the same time. we fixed by giving it z-index which is not the right way)*/
+.carousel-cover .slide.active {
+	animation: showSlide 2s;
+	display: block;
+	z-index: 2;
+}
+
+@keyframes showSlide{
+  0% {
+  		display: none;
+  }
+  100% {
+  		display: block;
+  }
+}
+
+.carousel-cover .slide.prev-active {
+	animation: hideSlide 2s;
+	display: block;
+	z-index: 1;
+}
+
+@keyframes hideSlide{
+  0% {
+  		display: block;
+  }
+  100% {
+  		display: none;
+  }	
+}
+
+.carousel-cover .slide.active { /* here after ".carousel-cover" space should come or else it wont work */
+	display: flex;
+}
+
+.carousel-cover .controls .prev,
+.carousel-cover .controls .next {
+	position: absolute;
+	top: 50%;
+	height: 2.5rem;
+	width: 2.5rem;
+	color: #ffffff;
+	background-color: #C3C5CF;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 2.5rem;
+	font-size: 2rem;
+	cursor: pointer;
+	transition: 0.5s;
+}
+
+.carousel-cover .controls .prev{
+	left: 0;
+}
+
+.carousel-cover .controls .next{
+	right: 0;
+}
+
+.carousel-cover .controls .prev:hover,
+.carousel-cover .controls .next:hover{
+	background-color: #091FA4;
+}
+
+.carousel-cover .Indicator{
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	transform: translateX(-50%);  /* how is this working */
+}
+
+.carousel-cover .Indicator div{
+	display: inline-block;
+	width: 0.8rem;
+	height: 0.8rem;
+	background-color: #B0AEAA;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 1rem;
+	margin: 0 0.9rem;
+	transition: 0.5s
+}
+
+.carousel-cover .Indicator div:hover{
+	background-color: #6E6F74;
+	cursor: pointer;
+}
+
+.carousel-cover .Indicator div.active{
+	background-color: #6E6F74;
+}
+
+
+/*/////////////////////////////////////////// carousel done ///////////////////////////////////////////*/
+
+
+.info-box-1{
+	position: relative;
+	width: 90%;
+	height: 40rem;
+	margin: 4rem auto 0 auto;
+	background-color: #E7E7E7;
+	z-index: -5;
+}
+
+.info-text{
+	position: absolute;
+	width: 35rem;
+	height: 10rem;
+	top: 9%;
+	left: 5.5%;
+	background-color: pink;
+}
+
+.info-img{
+	position: absolute;
+	width: 35rem;
+	height: 20rem;
+	bottom: 9%;
+	left: 5.5%;
+	background-color: pink;
+}
+
+.info-carousel{
+	position: absolute;
+	width: 35rem;
+	height: 25rem;
+	top: 9%;
+	right: 5.5%;
+	background-color: pink;
+}
+
+.explore-btn{
+	position: absolute;
+	bottom: 12%;
+	right: 17.5%;
+	width: 15rem;
+	height: 2.7rem;
+	background-color: pink;
+	text-align: center;
+	font-family: sans-serif;
+	color: #ffffff;
+	font-weight: 600;
+	font-size: 1.15rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.go-to-top{
+	position: fixed;
+	width: 2.5rem;
+	height: 2.5rem;
+	right: 1.3rem;
+	bottom: 1.3rem;
+	color: #BDB3B3;
+	background: transparent;
+	border-radius: 50%;
+	border: solid;
+	text-align: center;
+	font-size: 1.5rem;
+	font-weight: 900;
+	line-height: 2.5rem;
+	align-items: center;
+	display: none;
+	cursor: pointer;
+}
+
+.show-go-to-top {
+	display: block;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+main{
+	height: 200rem;
+	z-index: -2;
+}
